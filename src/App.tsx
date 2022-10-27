@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { GameController } from "phosphor-react";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import { Input } from "./components/Input";
 
 interface Game {
   id: string;
@@ -63,24 +64,23 @@ function App() {
                 <label htmlFor="game" className="font-semibold">
                   Qual o game?
                 </label>
-                <input
+                <Input
                   id="game"
-                  placeholder="Selecione o game que deseja jogar"
-                  className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
-                />
+                  placeholder="Selecione o game que você deseja jogar"
+                ></Input>
               </div>
               <div>
                 <label htmlFor="name">Seu nome(ou nicknanme)</label>
-                <input id="name" placeholder="Como te chamam dentro do game?" />
+                <Input id="name" placeholder="Como te chamam dentro do game?" />
               </div>
               <div>
                 <div>
                   <label htmlFor="yearsPlaying">Joga quantos anos?</label>
-                  <input id="yearsPalying" placeholder="Tudo bem ser ZERO" />
+                  <Input id="yearsPalying" placeholder="Tudo bem ser ZERO" />
                 </div>
                 <div>
                   <label htmlFor="discord">Qual seu discord?</label>
-                  <input id="discord" placeholder="Usuario#9999" />
+                  <Input id="discord" placeholder="Usuario#9999" />
                 </div>
               </div>
               <div>
@@ -90,12 +90,12 @@ function App() {
                 <div>
                   <label htmlFor="hourStart">Qual horario do dia?</label>
                   <div>
-                    <input type="time" id="hourStart" placeholder="De" />
-                    <input type="time" id="hourEnd" placeholder="Até" />
+                    <Input type="time" id="hourStart" placeholder="De" />
+                    <Input type="time" id="hourEnd" placeholder="Até" />
                   </div>
                 </div>
                 <div>
-                  <input type="checkbox" />
+                  <Input type="checkbox" />
                   Costumo me conectar ao chat de voz
                 </div>
                 <footer>
