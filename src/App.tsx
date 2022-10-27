@@ -7,6 +7,7 @@ import { GameController } from "phosphor-react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { Input } from "./components/Input";
+import { ButtonWeek } from "./components/ButtonWeek";
 
 interface Game {
   id: string;
@@ -59,7 +60,7 @@ function App() {
             <Dialog.Title className="text-3xl font-black">
               Publique um anúncio
             </Dialog.Title>
-            <form className="mt-8">
+            <form className="mt-8 flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <label htmlFor="game" className="font-semibold">
                   Qual o game?
@@ -73,39 +74,59 @@ function App() {
                 <label htmlFor="name">Seu nome(ou nicknanme)</label>
                 <Input id="name" placeholder="Como te chamam dentro do game?" />
               </div>
-              <div>
-                <div>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
                   <label htmlFor="yearsPlaying">Joga quantos anos?</label>
                   <Input id="yearsPalying" placeholder="Tudo bem ser ZERO" />
                 </div>
-                <div>
+                <div className="flex flex-col gap-2">
                   <label htmlFor="discord">Qual seu discord?</label>
                   <Input id="discord" placeholder="Usuario#9999" />
                 </div>
               </div>
-              <div>
-                <div>
+
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-2">
                   <label htmlFor="weekDays">Quando costuma jogar?</label>
+                  <div className="grid grid-cols-4 gap-2">
+                    <ButtonWeek title="Domingo">D</ButtonWeek>
+                    <ButtonWeek title="Segunda">S</ButtonWeek>
+                    <ButtonWeek title="Terça">T</ButtonWeek>
+                    <ButtonWeek title="Quarta">Q</ButtonWeek>
+                    <ButtonWeek title="Quinta">Q</ButtonWeek>
+                    <ButtonWeek title="Sexta">S</ButtonWeek>
+                    <ButtonWeek title="Sabado">S</ButtonWeek>
+                  </div>
                 </div>
-                <div>
+                <div className="flex flex-col gap-2 flex-1">
                   <label htmlFor="hourStart">Qual horario do dia?</label>
-                  <div>
+                  <div className="grid grid-cols-1 gap-2">
                     <Input type="time" id="hourStart" placeholder="De" />
                     <Input type="time" id="hourEnd" placeholder="Até" />
                   </div>
                 </div>
-                <div>
-                  <Input type="checkbox" />
-                  Costumo me conectar ao chat de voz
-                </div>
-                <footer>
-                  <button>Cancelar</button>
-                  <button type="submit">
-                    <GameController />
-                    Encontrar duo
-                  </button>
-                </footer>
               </div>
+
+              <div className="mt-2 flex gap-2 text-sm">
+                <Input type="checkbox" />
+                Costumo me conectar ao chat de voz
+              </div>
+
+              <footer className="mt-4 flex justify-end gap-4">
+                <Dialog.Close
+                  type="button"
+                  className="bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600"
+                >
+                  Cancelar
+                </Dialog.Close>
+                <button
+                  type="submit"
+                  className="bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600"
+                >
+                  <GameController className="w-6 h-6" />
+                  Encontrar duo
+                </button>
+              </footer>
             </form>
           </Dialog.Content>
         </Dialog.Portal>
