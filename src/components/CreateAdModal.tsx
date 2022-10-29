@@ -36,13 +36,13 @@ export function CreateAdModal({ titles }: CreateAdModal) {
               Qual o game?
             </label>
             <div
-              className={`bg-zinc-900 py-3 px-4 rounded text-sm   ${
+              className={`bg-zinc-900 py-3 px-4 rounded text-sm${
                 isSelectGameCheck ? "text-white" : "text-zinc-500"
               }`}
             >
               <Select.Root onOpenChange={() => setIsSelectGameCheck(true)}>
-                <Select.Trigger>
-                  <Select.Value placeholder="Selecione o jogo"></Select.Value>
+                <Select.Trigger className="w-[368px] text-start outline-none">
+                  <Select.Value placeholder="Selecione o jogo" />
                 </Select.Trigger>
                 <Select.Portal className="bg-zinc-900  cursor-default w-[400px] p-4 rounded text-white border border-violet-500">
                   <Select.Content>
