@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { CreateAdModal } from "./components/CreateAdModal";
+import axios from "axios";
 
 interface Game {
   id: string;
   bannerUrl: string;
   title: string;
   _count: {
-    ads: number;
+    Ad: number;
   };
 }
 
@@ -20,11 +21,9 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/games")
-      .then((response) => response.json())
-      .then((data) => {
-        setGames(data);
-      });
+    axios("http://localhost:3333/games").then((response) => {
+      setGames(response.data);
+    });
   }, []);
 
   return (
@@ -44,7 +43,7 @@ function App() {
               key={game.id}
               title={game.title}
               bannerUrl={game.bannerUrl}
-              adCount={game._count.ads}
+              adCount={game._count.Ad}
             />
           );
         })}
@@ -52,7 +51,7 @@ function App() {
 
       <Dialog.Root>
         <CreateAdBanner />
-        <CreateAdModal titles={games.map((game) => game.title)} />
+        <CreateAdModal />
       </Dialog.Root>
     </div>
   );
